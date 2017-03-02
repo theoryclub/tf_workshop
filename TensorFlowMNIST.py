@@ -7,23 +7,23 @@ import os
 path=os.path.dirname(os.path.realpath(__file__))
 
 #function to read MNIST images and labels into numpy matrices
-# def readMNIST(imagesFile, labelsFile, numImages):
-#     image_file=open(imagesFile, "rb")
-#     imageBytes=image_file.read()
-#     image_file.close()    
-#     labelFile=open(labelsFile, "rb")
-#     labelsBytes=labelFile.read()
-#     labelFile.close()    
-#     images=np.zeros([numImages, 28*28], np.float32)
-#     labels=np.zeros([numImages, 10], np.float32)   
-#     imageOffset=16
-#     labelOffset=8    
-#     for imageInd in range(0, numImages):
-#         labels[imageInd][struct.unpack('B', labelsBytes[labelOffset+imageInd])[0]]=1.0
-#         for row in range(0, 28):
-#             for col in range(0, 28):
-#                 images[imageInd][28*row+col]=struct.unpack('B', imageBytes[imageOffset+28*28*imageInd+28*row+col])[0]/256.0
-#     return images, labels
+def readMNIST(imagesFile, labelsFile, numImages):
+    image_file=open(imagesFile, "rb")
+    imageBytes=image_file.read()
+    image_file.close()    
+    labelFile=open(labelsFile, "rb")
+    labelsBytes=labelFile.read()
+    labelFile.close()    
+    images=np.zeros([numImages, 28*28], np.float32)
+    labels=np.zeros([numImages, 10], np.float32)   
+    imageOffset=16
+    labelOffset=8    
+    for imageInd in range(0, numImages):
+        labels[imageInd][struct.unpack('B', labelsBytes[labelOffset+imageInd])[0]]=1.0
+        for row in range(0, 28):
+            for col in range(0, 28):
+                images[imageInd][28*row+col]=struct.unpack('B', imageBytes[imageOffset+28*28*imageInd+28*row+col])[0]/256.0
+    return images, labels
 
 def getClassificationAccuracy(networkOutputs, trueLabels):
     numberCorrect=0.0
