@@ -1,0 +1,6 @@
+model_checkpoint_path: "/home/willie/workspace/TensorFlowWorkshop/data/SavedNetworks75"
+all_model_checkpoint_paths: "/home/willie/workspace/TensorFlowWorkshop/data/SavedNetworks71"
+all_model_checkpoint_paths: "/home/willie/workspace/TensorFlowWorkshop/data/SavedNetworks72"
+all_model_checkpoint_paths: "/home/willie/workspace/TensorFlowWorkshop/data/SavedNetworks73"
+all_model_checkpoint_paths: "/home/willie/workspace/TensorFlowWorkshop/data/SavedNetworks74"
+all_model_checkpoint_paths: "/home/willie/workspace/TensorFlowWorkshop/data/SavedNetworks75"
