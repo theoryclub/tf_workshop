@@ -69,5 +69,5 @@ sess = tf.InteractiveSession()
 tf.initialize_all_variables().run()
 for _ in range(100):
     crossEntropy, acc, _=sess.run([cross_entropy, accuracy, train_step], feed_dict={x: trainVoiceFeatures, y_: trainLabels})
-    print crossEntropy, acc
+    print(crossEntropy, acc)
     print(sess.run(accuracy, feed_dict={x: validateVoiceFeatures, y_: validateLabels}))

@@ -301,7 +301,7 @@ with tf.Session() as session:
                                                                   roasts: roastsData[batchInd:batchEndInd],
                                                                   zeroWords: zeros})#
             sessLoss+=batchLoss*(batchEndInd-batchInd)
-        print 'Epoch '+str(i)+' train loss', sessLoss/float(len(descriptions))
+        print('Epoch '+str(i)+' train loss', sessLoss/float(len(descriptions)))
         
         if i%10==0:
             zeros=np.zeros([1, num_steps, numSymbols])
@@ -317,9 +317,9 @@ with tf.Session() as session:
                 hiddenState, output[step]=session.run([state, rnnOutput], feed_dict={hiddenState1: hiddenState,
                                                                                      zeroWords: output[step-1]})
                 
-            print 'description: '+unmapOneHotWords(descriptions[dispInd])
-            print 'roast: '+unmapOneHotWords(output)
-            print 'desired roast: '+unmapOneHotWords(roastsData[dispInd])
+            print('description: '+unmapOneHotWords(descriptions[dispInd]))
+            print('roast: '+unmapOneHotWords(output))
+            print('desired roast: '+unmapOneHotWords(roastsData[dispInd]))
             sessLoss=0.0
 #             sessOutput=np.zeros([len(valDescriptions), num_steps, numSymbols])
 #             for batchInd in range(0, len(valDescriptions), BATCH_SIZE):

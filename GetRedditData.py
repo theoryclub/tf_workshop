@@ -26,7 +26,7 @@ startRequestTime=0
 
 def getNextPageContents(currentPage):
     nextPageURL=getStringBetween(nextPageStart, nextPageEnd, currentPage)
-    print nextPageURL
+    print(nextPageURL)
     return getHTML(nextPageURL)
     
 def getStringBetween(startStr, endStr, str):

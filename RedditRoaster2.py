@@ -242,8 +242,8 @@ def decode_embed(array, vocab):
 ckpt_file = ""
 TEST_PREFIX = "you look " # Prefix to prompt the network in test mode
 
-print "Usage:"
-print '\t\t ', sys.argv[0], ' [ckpt model to load] [prefix, e.g., "The "]'
+print("Usage:")
+print('\t\t ', sys.argv[0], ' [ckpt model to load] [prefix, e.g., "The "]')
 if len(sys.argv)>=2:
     ckpt_file=sys.argv[1]
 if len(sys.argv)==3:
@@ -325,7 +325,7 @@ if ckpt_file == "":
             diff = new_time - last_time
             last_time = new_time
 
-            print "batch: ",i,"   loss: ",cst,"   speed: ",(100.0/diff)," batches / s"
+            print("batch: ",i,"   loss: ",cst,"   speed: ",(100.0/diff)," batches / s")
 
     saver.save(sess, "/home/willie/workspace/TensorFlowWorkshop/data/SavedNetworks/model.ckpt")
 
@@ -341,11 +341,11 @@ TEST_PREFIX = TEST_PREFIX.lower()
 for i in range(len(TEST_PREFIX)):
     out = net.run_step( embed_to_vocab(TEST_PREFIX[i], vocab) , i==0)
 
-print "SENTENCE:"
+print("SENTENCE:")
 gen_str = TEST_PREFIX
 for i in range(LEN_TEST_TEXT):
     element = np.random.choice( range(len(vocab)), p=out ) # Sample character from the network according to the generated output probabilities
     gen_str += vocab[element]
 
     out = net.run_step( embed_to_vocab(vocab[element], vocab) , False )
-print gen_str
+print(gen_str)

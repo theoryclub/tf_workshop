@@ -244,14 +244,14 @@ def getSentances(net, imagePath, description, time_steps, vocab):
         for i in range(len(TEST_PREFIX)):
             out = net.run_step( embed_to_vocab_2D(TEST_PREFIX[i], vocab), TEST_IMAGE, embed_to_vocab([description], time_steps, vocab)[0:1, :, :], i==0)
 
-        print "SENTENCE:"
+        print("SENTENCE:")
         gen_str = TEST_PREFIX
         for i in range(time_steps):
             element = np.random.choice( range(len(vocab)), p=out )
             gen_str += vocab[element]
             out = net.run_step( embed_to_vocab_2D(vocab[element], vocab), TEST_IMAGE, embed_to_vocab([description], time_steps, vocab)[0:1, :, :], False )
-        print gen_str
-    print
+        print(gen_str)
+    print()
 
 
 
@@ -322,7 +322,7 @@ if ckpt_file == "/home/willie/workspace/TensorFlowWorkshop/data/SavedNetworks/mo
                 diff = new_time - last_time
                 last_time = new_time
     
-                print "epoch",epochNum,"batch: ",batchNum,"   loss: ",cst,"   speed: ",(100.0/diff)," batches / s"
+                print("epoch",epochNum,"batch: ",batchNum,"   loss: ",cst,"   speed: ",(100.0/diff)," batches / s")
         if epochNum%50==0:
             saver.save(sess, "/home/willie/workspace/TensorFlowWorkshop/data/SavedNetworks/model3"+str(epochNum)+"descriptions_mem.ckpt")
 

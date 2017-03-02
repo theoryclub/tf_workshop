@@ -26,12 +26,12 @@ for step in range(10):
     session_loss, _=session.run(
         [loss, train_op], #graph variable we want to compute
         feed_dict={x_placeHolder: X_data, y_placeHolder: Y_data}) #inputs to the graph we must specify so we can compute above vars
-    print 'loss', session_loss
+    print('loss', session_loss)
     
     fitted_ys=session.run(
         y_fit, #graph variable we want to compute
         feed_dict={x_placeHolder: X_data}) #inputs to the graph we must specify so we can compute above vars
-    print 'fitted y\'s', fitted_ys
+    print('fitted y\'s', fitted_ys)
     
     
     
@@ -43,4 +43,4 @@ def fit_points_with_model(x_placeHolder):
     return y_fit
 
 fitted_ys=fit_points_with_model(X_data)
-print 'fitted y\'s', fitted_ys
+print('fitted y\'s', fitted_ys)

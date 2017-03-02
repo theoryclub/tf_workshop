@@ -75,7 +75,7 @@ global_step = tf.Variable(0, name='global_step', trainable=False)
 train_op = optimizer.minimize(loss, global_step=global_step)
 
 #read MNIST images and tabels
-trainImages, trainLabels, valImages, valLabels=loadData('./data/iris.csv')
+trainImages, trainLabels, valImages, valLabels=loadData('./data/Iris.csv')
 
 #train neural network
 BATCH_SIZE=2500;
