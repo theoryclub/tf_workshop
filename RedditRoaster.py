@@ -166,9 +166,9 @@ def loadData(file):
             roast=readToLines(file+fileName)
             for roastInd in range(0, min(numRoastsPerImage, len(roast))):
                 if dataInd<int(7*numRoasts/8):
-                    roasts+=[re.sub(r'[^\x00-\x7F]+',' ', roast[roastInd].lower())]
+                    roasts+=[re.subtract(r'[^\x00-\x7F]+',' ', roast[roastInd].lower())]
                 else:
-                    valRoasts+=[re.sub(r'[^\x00-\x7F]+',' ', roast[roastInd].lower())]
+                    valRoasts+=[re.subtract(r'[^\x00-\x7F]+',' ', roast[roastInd].lower())]
                             
                 roastEndInd=fileName.index('roasts')+len('roasts')
                 pageNumEndInd=fileName.index('_')
@@ -192,9 +192,9 @@ def loadData(file):
                 imageFile.close()
                 
                 if dataInd<int(7*numRoasts/8):
-                    descriptions+=[re.sub(r'[^\x00-\x7F]+',' ', (readToLines(file+'desc'+pageNum+'_'+postNum+'.txt')[0]).lower().replace("'",'').replace("[",''))]
+                    descriptions+=[re.subtract(r'[^\x00-\x7F]+',' ', (readToLines(file+'desc'+pageNum+'_'+postNum+'.txt')[0]).lower().replace("'",'').replace("[",''))]
                 else:
-                    valDescriptions+=[re.sub(r'[^\x00-\x7F]+',' ', (readToLines(file+'desc'+pageNum+'_'+postNum+'.txt')[0]).lower().replace("'",'').replace("[",''))]
+                    valDescriptions+=[re.subtract(r'[^\x00-\x7F]+',' ', (readToLines(file+'desc'+pageNum+'_'+postNum+'.txt')[0]).lower().replace("'",'').replace("[",''))]
                           
                 dataInd+=1
                 if dataInd>=40:

@@ -7,7 +7,7 @@ weight=tf.Variable([1.0]) #the weight we will adjust to fit our model
 y_fit=weight*x_placeHolder #the y values estimated from our model
 
 y_placeHolder=tf.placeholder(tf.float32, [None]) #the correct y values
-loss=tf.reduce_mean(tf.square(tf.sub(y_fit, y_placeHolder))) #aka mean squared error
+loss=tf.reduce_mean(tf.square(tf.subtract(y_fit, y_placeHolder))) #aka mean squared error
 
 #specify the optimization function
 global_step=tf.Variable(0, name='global_step', trainable=False) 
