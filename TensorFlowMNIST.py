@@ -32,7 +32,7 @@ def getClassificationAccuracy(networkOutputs, trueLabels):
             numberCorrect=numberCorrect+1
     print('Classification Accuracy: '+str(100*(numberCorrect/len(trueLabels)))+'%')
 
-print 'Training a neural network on the MNIST Handwriting Classification Problem'
+print('Training a neural network on the MNIST Handwriting Classification Problem')
 
 inputs = tf.placeholder(tf.float32, ([None, 28*28])) #inputs placeholder
 trueOutput = tf.placeholder(tf.float32, ([None, 10])) #correct image label placeholder
@@ -81,15 +81,15 @@ with tf.Session() as session:
                                                                                        trueOutput: trainLabels[shuffle[batchInd:batchInd+BATCH_SIZE]]})
             sessLoss+=batchLoss
             sessOutput[batchInd:batchInd+BATCH_SIZE]=batchOutput
-        print 'Epoch '+str(i)+' train loss', sessLoss/(60000/BATCH_SIZE)
+        print('Epoch '+str(i)+' train loss', sessLoss/(60000/BATCH_SIZE))
         getClassificationAccuracy(sessOutput, trainLabels)
-        print
+        print()
     
     testImages, testLabels=readMNIST(path+'/data/MNIST_Numbers/t10k-images.idx3-ubyte',
                                         path+'/data/MNIST_Numbers/t10k-labels.idx1-ubyte',
                                         10000) 
     
     sessLoss, sessOutput=session.run([loss, output], feed_dict={inputs: testImages, trueOutput: testLabels})  
-    print'test loss', sessLoss
+    print('test loss', sessLoss)
     getClassificationAccuracy(sessOutput, testLabels)
  
