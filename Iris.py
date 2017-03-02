@@ -51,7 +51,7 @@ def getClassificationAccuracy(networkOutputs, trueLabels):
             numberCorrect=numberCorrect+1
     print('Classification Accuracy: '+str(100*(numberCorrect/len(trueLabels)))+'%')
 
-print 'Training a neural network on the MNIST Handwriting Classification Problem'
+print('Training a neural network on the MNIST Handwriting Classification Problem')
 
 inputs = tf.placeholder(tf.float32, ([None, FEATURES])) #inputs placeholder
 trueOutput = tf.placeholder(tf.float32, ([None, NUM_CLASSES])) #correct image label placeholder
@@ -67,7 +67,7 @@ biases2 = tf.Variable(tf.zeros([output_num_neurons]))
 output = tf.nn.softmax(tf.matmul(hidden1, weights2) + biases2)
 
 #loss function: mean squared error
-loss=tf.reduce_mean(tf.square(tf.sub(output, trueOutput)))
+loss=tf.reduce_mean(tf.square(tf.subtract(output, trueOutput)))
 
 #specify optimization operation ('train op')
 optimizer = tf.train.AdamOptimizer()
@@ -75,7 +75,7 @@ global_step = tf.Variable(0, name='global_step', trainable=False)
 train_op = optimizer.minimize(loss, global_step=global_step)
 
 #read MNIST images and tabels
-trainImages, trainLabels, valImages, valLabels=loadData('/home/willie/workspace/TensorFlowWorkshop/data/iris.csv')
+trainImages, trainLabels, valImages, valLabels=loadData('./data/iris.csv')
 
 #train neural network
 BATCH_SIZE=2500;
@@ -92,11 +92,11 @@ with tf.Session() as session:
                                                                                        trueOutput: trainLabels[shuffle[batchInd:batchInd+BATCH_SIZE]]})
             sessLoss+=batchLoss
             sessOutput[batchInd:batchInd+BATCH_SIZE]=batchOutput
-        print 'Epoch '+str(i)+' train loss', sessLoss
+        print('Epoch '+str(i)+' train loss', sessLoss)
         getClassificationAccuracy(sessOutput, trainLabels)
-        print
+        print()
 
     sessLoss, sessOutput=session.run([loss, output], feed_dict={inputs: valImages, trueOutput: valLabels})  
-    print'test loss', sessLoss
+    print('test loss', sessLoss)
     getClassificationAccuracy(sessOutput, valLabels)
  

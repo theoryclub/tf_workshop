@@ -54,7 +54,7 @@ biases2 = tf.Variable(tf.zeros([output_num_neurons]))
 output = tf.nn.softmax(tf.matmul(hidden1, weights2) + biases2)
 
 #loss function: mean squared error
-loss=tf.reduce_mean(tf.square(tf.sub(output, trueOutput)))
+loss=tf.reduce_mean(tf.square(tf.subtract(output, trueOutput)))
 
 #specify optimization operation ('train op')
 optimizer = tf.train.AdamOptimizer()
